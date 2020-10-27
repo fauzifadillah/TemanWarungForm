@@ -1,0 +1,9 @@
+@media (max-width: 600px) {
+    .form-group {
+        justify-content: center;
+        align-content: center;
+    }
+    .header-name {
+        font-weight: 700;
+    }
+}
