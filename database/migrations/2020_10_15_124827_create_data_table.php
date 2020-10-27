@@ -17,7 +17,12 @@ class CreateDataTable extends Migration
             $table->id();
             $table->string('nama_canvaser');
             $table->string('nama_pemilik');
-            $table->longText('alamat_lengkap');
+            $table->string('alamat_lengkap'); // HEAD
+            $table->string('rt_rw');
+            $table->string('kelurahan');
+            $table->string('kecamatan');
+            $table->string('kota');
+            $table->integer('kode_pos');
             $table->string('jenis_usaha');
             $table->string('aplikasi_chat');
             $table->string('nomor_whatsapp');

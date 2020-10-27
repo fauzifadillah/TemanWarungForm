@@ -16,6 +16,11 @@ class DataController extends Controller
             'nama_canvaser' => 'required|max:255',
             'nama_pemilik' => 'required|max:255',
             'alamat_lengkap' => 'required',
+            'rt_rw' => 'required',
+            'kelurahan' => 'required',
+            'kecamatan' => 'required',
+            'kota' => 'required',
+            'kode_pos' => 'required',
             'jenis_usaha' => 'required|max:255',
             'nomor_whatsapp' => 'required|unique:data|max:255',
             'aplikasi_chat' => 'required|max:255',
@@ -44,6 +49,11 @@ class DataController extends Controller
         $data->nama_canvaser = $request->nama_canvaser;
         $data->nama_pemilik = $request->nama_pemilik;
         $data->alamat_lengkap = $request->alamat_lengkap;
+        $data->rt_rw = $request->rt_rw;
+        $data->kelurahan = $request->kelurahan;
+        $data->kecamatan = $request->kecamatan;
+        $data->kota = $request->kota;
+        $data->kode_pos = $request->kode_pos;
         $data->jenis_usaha = $request->jenis_usaha;
         $data->aplikasi_chat = $request->aplikasi_chat;
         $data->nomor_whatsapp = $request->nomor_whatsapp;
