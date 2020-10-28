@@ -2,6 +2,18 @@
 
 @section('content')
 <div class="container">
+  <div class="row container-content">
+    <!-- Page Title -->
+    <div class="col-lg-12 text-center">
+      <img class="page-title" src="https://www.survey.temanwarung.id/tw_biru.png">
+    </div>
+    <div class="col-lg-12 text-center">
+      <b>#SelaluAdaTeman</b>
+    </div>
+    <div class="col-lg-12">
+      
+    </div>
+  </div>
     <div class="justify-content-center mt-5">
         @if(Session()->has('status'))
             <div class="alert alert-success">

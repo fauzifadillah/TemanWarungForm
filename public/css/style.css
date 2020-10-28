@@ -16,3 +16,187 @@
         font-weight: 500;
     }
 }
+/* Custom ScrollBar */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #195ddd;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #5288f4;
+}
+
+/* Teman Warung Styling */
+body {
+    font-family: "Poppins" !important;
+}
+.logo-temanwarung {
+    margin-right: auto;
+    margin-left: 60px;
+}
+
+.hashtag-temanwarung {
+    margin-left: auto;
+    margin-right: 60px;
+}
+
+.border-temanwarung {
+    border-top: 3px solid #195ddd !important;
+    border-radius: 10px;
+}
+
+.btn-primary-temanwarung {
+    background-image: linear-gradient(to bottom right, #195ddd, #5288f4);
+    color: #ffffff !important;
+}
+
+.btn-secondary-temanwarung {
+    background: #fff;
+    color: #195ddd !important;
+    border: 1px solid #195ddd !important;
+}
+
+.text-blue-temanwarung {
+    color: #195ddd !important;
+}
+/* End of Teman Warung Styling */
+
+.header-section {
+    color: white;
+    background-image: linear-gradient(to bottom right, #195ddd, #5288f4);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 75px;
+}
+
+.card {
+    border: none !important;
+}
+
+.card-body {
+    border: tomato;
+    line-height: 2px;
+}
+
+.container-content {
+    position: relative;
+    /* top: 75px; */
+}
+
+.image-detail {
+    width: 100%;
+}
+
+.active-image {
+    border-left: 2px solid #5288f4;
+    border-right: 2px solid #5288f4;
+    /* border-radius: 10px; */
+}
+
+td {
+    padding: 20px;
+}
+
+.page-title {
+    width: 200px;
+    padding-top: 50px;
+}
+
+.container-footer {
+    margin-top: 50px;
+    padding: 75px 0px;
+    background-image: linear-gradient(to bottom right, #195ddd, #5288f4);
+}
+
+.container-footer .fab {
+    font-size: 40px;
+    margin: 0 8px;
+    height: 40px;
+    /* width: 15px; */
+    color: #fff;
+    vertical-align: middle;
+}
+
+.container-footer .footer-term-condition {
+    color: #fff;
+}
+
+.container-footer .footer-copyright {
+    color: #e2e3e9;
+}
+
+@media only screen and (max-width: 768px) {
+    .image-detail {
+        padding: 10px;
+    }
+
+    td {
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .card-body {
+        padding: 0.25rem !important;
+    }
+
+    .image-detail {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .logo-temanwarung {
+        margin-left: 10px;
+    }
+
+    .hashtag-temanwarung {
+        margin-right: 10px;
+    }
+
+    td {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    td a {
+        font-size: 10px !important;
+    }
+
+    .page-title {
+        width: 100px;
+        padding-top: 30px;
+    }
+
+    .container-footer {
+        padding: 50px 0px;
+    }
+
+    .container-footer .fab {
+        font-size: 25px;
+        margin: 0 4px;
+        height: 25px;
+    }
+
+    .container-footer .footer-term-condition {
+        font-size: 14px;
+    }
+
+    .container-footer .footer-copyright {
+        font-size: 12px;
+    }
+}
