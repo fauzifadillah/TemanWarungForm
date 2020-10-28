@@ -7,3 +7,12 @@
         font-weight: 700;
     }
 }
+@media (max-width: 320px) {
+    .form-group {
+        justify-content: center;
+        align-content: center;
+    }
+    .header-name {
+        font-weight: 500;
+    }
+}
