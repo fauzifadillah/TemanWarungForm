@@ -19,5 +19,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', 'DataController@index');
-Route::post('/createData', 'DataController@store');
+Route::post('/', 'DataController@store')->name('data.store');
+Route::get('dashboard', 'DataController@dashboard')->name('data.dashboard');
+Route::get('datatable', 'DataController@datatable')->name('data.dt');
