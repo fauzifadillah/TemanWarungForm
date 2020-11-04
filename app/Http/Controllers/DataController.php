@@ -95,7 +95,13 @@ class DataController extends Controller
         }
 
         $model = Data::findOrFail($id)->update($model);
-        return response()->json(true);
+        return response()->json($model);
+    }
+
+    public function delete($id)
+    {
+        $model = Data::findOrFail($id)->delete();
+        return response()->json($model);
     }
 
     public function dashboard()
