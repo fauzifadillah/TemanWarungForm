@@ -2,25 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::resource('/data', 'DataController');
-// Route::get('/coba', 'DataController@index');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'DataController@index');
+Route::get('/', 'DataController@index')->name('data.index');
 Route::post('/', 'DataController@store')->name('data.store');
-Route::get('dashboard', 'DataController@dashboard')->name('data.dashboard');
-Route::get('datatable', 'DataController@datatable')->name('data.dt');
+
+Route::prefix('dashboard')->group(function(){
+	Route::get('/', 'DataController@dashboard')->name('data.dashboard');
+	Route::prefix('data')->group(function(){
+		Route::get('edit/{id}', 'DataController@edit')->name('data.edit');
+		Route::put('update/{id}', 'DataController@update')->name('data.update');
+		Route::delete('delete/{id}', 'DataController@delete')->name('data.delete');
+		Route::get('datatable', 'DataController@datatable')->name('data.dt');
+	});
+});
