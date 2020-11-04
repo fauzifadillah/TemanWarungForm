@@ -363,6 +363,8 @@
   <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
   <!-- Bootstrap 4 -->
   <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+  <!-- Sweet Alert 2 -->
+  <script src="{{ asset('js/sweetalert2.all.js') }}"></script>
 
   <!-- Bootstrap core JavaScript-->
   <!-- <script src="../vendor/jquery/jquery.min.js"></script> -->

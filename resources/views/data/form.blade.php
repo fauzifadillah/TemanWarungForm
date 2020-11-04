@@ -40,9 +40,9 @@
     <div class="form-group">
         <label for="" class="control-label">Status Bangunan</label>
         <select class="custom-select custom-select-s" name="status_bangunan">
-          <option value="">Pilih</option>
-          <option value="Pribadi">Pribadi</option>
-          <option value="Kontrak">Kontrak</option>
+          <option value="" disabled selected>Pilih</option>
+          <option value="Pribadi" @if($model->status_bangunan == 'Pribadi') selected="selected" @endif>Pribadi</option>
+          <option value="Kontrak" @if($model->status_bangunan == 'Kontrak') selected="selected" @endif>Kontrak</option>
         </select>
     </div>
     <div class="form-group">

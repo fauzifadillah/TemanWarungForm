@@ -33,39 +33,22 @@ class DataController extends Controller
             'foto_bangunan' => 'nullable|file|image|mimes:jpeg,png,jpg'
         ]);
 
-        $imageName = "noimage.png";
+        $model = $request->all();
         if($request->hasFile('foto_ktp')){
             $directory = '/upload/foto_ktp/';
             $imageName = $request->nama_pemilik.'.'.$request->foto_ktp->extension();
             $request->foto_ktp->move(public_path($directory), $imageName);
-            $imageName = $directory.$imageName;
+            $model['foto_ktp'] = $directory.$imageName;
         }
 
-        $fileName = null;
         if($request->hasFile('foto_bangunan')){
             $directory = '/upload/foto_bangunan/';
             $imageBangunan = $request->nama_pemilik.'.'.$request->foto_bangunan->extension();
             $request->foto_bangunan->move(public_path($directory), $imageBangunan);
-            $imageBangunan = $directory.$imageBangunan;
+            $model['foto_bangunan'] = $directory.$imageBangunan;
         }
 
-        $model = Data::create([
-            'nama_canvaser' => $request->nama_canvaser,
-            'nama_pemilik' => $request->nama_pemilik,
-            'alamat_lengkap' => $request->alamat_lengkap,
-            'rt_rw' => $request->rt_rw,
-            'kelurahan' => $request->kelurahan,
-            'kecamatan' => $request->kecamatan,
-            'kota' => $request->kota,
-            'kode_pos' => $request->kode_pos,
-            'jenis_usaha' => $request->jenis_usaha,
-            'aplikasi_chat' => $request->aplikasi_chat,
-            'nomor_whatsapp' => $request->nomor_whatsapp,
-            'status_bangunan' => $request->status_bangunan,
-            'tiga_produk' => $request->tiga_produk,
-            'foto_ktp' => $imageName,
-            'foto_bangunan' => $imageBangunan
-        ]);
+        $save = Data::create($model);
         $request->session()->flash('status', "Data berhasil ditambahkan!");
         return redirect('/');
     }
@@ -88,7 +71,7 @@ class DataController extends Controller
             'kota' => 'required',
             'kode_pos' => 'required',
             'jenis_usaha' => 'required|max:255',
-            'nomor_whatsapp' => 'required|unique:data|max:255',
+            'nomor_whatsapp' => 'required|max:255',
             'aplikasi_chat' => 'required|max:255',
             'status_bangunan' => 'required|max:255',
             'tiga_produk' => 'required|max:255',
@@ -96,8 +79,23 @@ class DataController extends Controller
             'foto_bangunan' => 'nullable|file|image|mimes:jpeg,png,jpg'
         ]);
 
-        $model = Category::findOrFail($id)->update($request->all());
-        return response()->json($model);
+        $model = $request->all();
+        if($request->hasFile('foto_ktp')){
+            $directory = '/upload/foto_ktp/';
+            $imageName = $request->nama_pemilik.'.'.$request->foto_ktp->extension();
+            $request->foto_ktp->move(public_path($directory), $imageName);
+            $model['foto_ktp'] = $directory.$imageName;
+        }
+
+        if($request->hasFile('foto_bangunan')){
+            $directory = '/upload/foto_bangunan/';
+            $imageBangunan = $request->nama_pemilik.'.'.$request->foto_bangunan->extension();
+            $request->foto_bangunan->move(public_path($directory), $imageBangunan);
+            $model['foto_bangunan'] = $directory.$imageBangunan;
+        }
+
+        $model = Data::findOrFail($id)->update($model);
+        return response()->json(true);
     }
 
     public function dashboard()
