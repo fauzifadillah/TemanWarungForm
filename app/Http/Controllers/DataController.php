@@ -30,7 +30,7 @@ class DataController extends Controller
             'status_bangunan' => 'required|max:255',
             'tiga_produk' => 'required|max:255',
             'foto_ktp' => 'nullable|file|image|mimes:jpeg,png,jpg',
-            'foto_bangunan' => 'nullable|file|image|mimes:jpeg,png,jpg'
+            'foto_bangunan' => 'required|file|image|mimes:jpeg,png,jpg'
         ]);
 
         $model = $request->all();
@@ -38,14 +38,17 @@ class DataController extends Controller
             $directory = '/upload/foto_ktp/';
             $imageName = $request->nama_pemilik.'.'.$request->foto_ktp->extension();
             $request->foto_ktp->move(public_path($directory), $imageName);
-            $model['foto_ktp'] = $directory.$imageName;
+            $model['foto_ktp'] = $imageName;
+        }
+        else{
+            $model['foto_ktp'] = 'noimage.png';
         }
 
         if($request->hasFile('foto_bangunan')){
             $directory = '/upload/foto_bangunan/';
             $imageBangunan = $request->nama_pemilik.'.'.$request->foto_bangunan->extension();
             $request->foto_bangunan->move(public_path($directory), $imageBangunan);
-            $model['foto_bangunan'] = $directory.$imageBangunan;
+            $model['foto_bangunan'] = $imageBangunan;
         }
 
         $save = Data::create($model);
@@ -81,17 +84,17 @@ class DataController extends Controller
 
         $model = $request->all();
         if($request->hasFile('foto_ktp')){
-            $directory = '/upload/foto_ktp/';
+            $directory = 'foto_ktp';
             $imageName = $request->nama_pemilik.'.'.$request->foto_ktp->extension();
             $request->foto_ktp->move(public_path($directory), $imageName);
-            $model['foto_ktp'] = $directory.$imageName;
+            $model['foto_ktp'] = $imageName;
         }
 
         if($request->hasFile('foto_bangunan')){
-            $directory = '/upload/foto_bangunan/';
+            $directory = 'foto_bangunan';
             $imageBangunan = $request->nama_pemilik.'.'.$request->foto_bangunan->extension();
             $request->foto_bangunan->move(public_path($directory), $imageBangunan);
-            $model['foto_bangunan'] = $directory.$imageBangunan;
+            $model['foto_bangunan'] = $imageBangunan;
         }
 
         $model = Data::findOrFail($id)->update($model);
@@ -114,10 +117,10 @@ class DataController extends Controller
         $model = Data::get();
         return DataTables::of($model)
             ->editColumn('foto_ktp', function($model){
-                if ($model->foto_ktp == NULL){
+                if ($model->foto_ktp == 'noimage.png'){
                     return 'No Image';
                 }
-                $url = asset($model->foto_ktp);
+                $url = asset('/foto_ktp/'.$model->foto_ktp);
                 $image = '<img src="'.$url.'" width="100"/>';
                 return $image;
             })
@@ -125,7 +128,7 @@ class DataController extends Controller
                 if ($model->foto_bangunan == NULL){
                     return 'No Image';
                 }
-                $url = asset($model->foto_bangunan);
+                $url = asset('/foto_bangunan/'.$model->foto_bangunan);
                 $image = '<img src="'.$url.'" width="100"/>';
                 return $image;
             })
